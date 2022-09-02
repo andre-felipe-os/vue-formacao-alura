@@ -11,9 +11,7 @@
       </div>
       <div class="column">
         <div class="is-flex is-align-items-center is-justify-content-space-between">
-          <section>
-            <strong>{{ tempoDecorrido }}</strong>
-          </section>
+          <CronometroVue :tempoEmSegundos="tempoEmSegundos" />
           <button class="button" @click="iniciar">
             <span class="icon">
               <i class="fas fa-play"></i>
@@ -33,21 +31,18 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+  import { defineComponent } from 'vue';
+  import CronometroVue from './Cronometro.vue';
 
   export default defineComponent({
     name: 'FormularioVue',
+    components: {
+      CronometroVue
+    },
     data() {
       return {
         tempoEmSegundos: 0,
         cronometro: 0
-      }
-    },
-    computed: {
-      tempoDecorrido(): string {
-        return new Date(this.tempoEmSegundos * 1000)
-          .toISOString()
-          .substring(11,19);
       }
     },
     methods: {
