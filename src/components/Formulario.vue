@@ -12,9 +12,9 @@
       <div class="column">
         <div class="is-flex is-align-items-center is-justify-content-space-between">
           <section>
-            <strong>00:00:00</strong>
+            <strong>{{ tempoEmSegundos }}</strong>
           </section>
-          <button class="button">
+          <button class="button" @click="iniciar">
             <span class="icon">
               <i class="fas fa-play"></i>
             </span>
@@ -36,6 +36,18 @@
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'FormularioVue'
+    name: 'FormularioVue',
+    data() {
+      return {
+        tempoEmSegundos: 0
+      }
+    },
+    methods: {
+      iniciar() {
+        setInterval(() => {
+          this.tempoEmSegundos += 1;
+        }, 1000);
+      }
+    }
   })
 </script>
