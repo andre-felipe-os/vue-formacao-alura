@@ -20,7 +20,7 @@
             </span>
             <span>play</span>
           </button>
-          <button class="button">
+          <button class="button" @click="finalizar">
             <span class="icon">
               <i class="fas fa-stop"></i>
             </span>
@@ -39,7 +39,8 @@
     name: 'FormularioVue',
     data() {
       return {
-        tempoEmSegundos: 0
+        tempoEmSegundos: 0,
+        cronometro: 0
       }
     },
     computed: {
@@ -51,9 +52,12 @@
     },
     methods: {
       iniciar() {
-        setInterval(() => {
+        this.cronometro = setInterval(() => {
           this.tempoEmSegundos += 1;
         }, 1000);
+      },
+      finalizar() {
+        clearInterval(this.cronometro);
       }
     }
   })
