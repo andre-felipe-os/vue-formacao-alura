@@ -12,7 +12,7 @@
       <div class="column">
         <div class="is-flex is-align-items-center is-justify-content-space-between">
           <section>
-            <strong>{{ tempoEmSegundos }}</strong>
+            <strong>{{ tempoDecorrido }}</strong>
           </section>
           <button class="button" @click="iniciar">
             <span class="icon">
@@ -40,6 +40,13 @@
     data() {
       return {
         tempoEmSegundos: 0
+      }
+    },
+    computed: {
+      tempoDecorrido(): string {
+        return new Date(this.tempoEmSegundos * 1000)
+          .toISOString()
+          .substring(11,19);
       }
     },
     methods: {
