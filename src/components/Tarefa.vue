@@ -1,5 +1,5 @@
 <template>
-  <div class="box has-text-weight-bold">
+  <CaixaVue>
     <div class="columns">
       <div class="column is-7">
         {{ tarefa.descricao || "Tarefa sem descrição" }}
@@ -8,17 +8,19 @@
         <CronometroVue :tempoEmSegundos="tarefa.duracaoEmSegundos"/>
       </div>
     </div>
-  </div>
+  </CaixaVue>
 </template>
 
 <script lang="ts">
   import { defineComponent, PropType } from "vue";
   import TarefaInterface from "../interfaces/TarefaInterface";
+  import CaixaVue from "./Caixa.vue";
   import CronometroVue from "./Cronometro.vue";
 
   export default defineComponent({
       name: 'TarefaVue',
       components: {
+          CaixaVue,
           CronometroVue
       },
       props: {
@@ -29,9 +31,3 @@
       }
   })
 </script>
-
-<style scoped>
-  .box {
-    background-color: #FAF0CA;
-  }
-</style>
