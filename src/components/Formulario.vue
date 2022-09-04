@@ -7,10 +7,11 @@
         <input
             type="text"
             class="input"
-            placeholder="Qual tarefa você deseja iniciar?" />
+            placeholder="Qual tarefa você deseja iniciar?"
+            v-model="descricao" />
       </div>
       <div class="column">
-        <TemporizadorVue />
+        <TemporizadorVue @aoFinalizarTemporizador="finalizarTarefa"/>
       </div>
     </div>
   </div>
@@ -22,8 +23,23 @@
 
   export default defineComponent({
     name: 'FormularioVue',
+    emits: ['aoSalvarTarefa'],
+    data() {
+      return {
+        descricao: ''
+      }
+    },
     components: {
       TemporizadorVue
+    },
+    methods: {
+      finalizarTarefa(tempoEmSegundos: number): void {
+        this.$emit('aoSalvarTarefa', {
+          duracaoEmSegundos: tempoEmSegundos,
+          descricao: this.descricao
+        });
+        this.descricao = '';
+      }
     }
   })
 </script>
