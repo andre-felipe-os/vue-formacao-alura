@@ -46,7 +46,10 @@
       finalizar() {
         this.cronometroRodando = false;
         clearInterval(this.cronometro);
+        this.$emit('aoFinalizarTemporizador', this.tempoEmSegundos);
+        this.tempoEmSegundos = 0;
       }
-    }
+    },
+    emits: ['aoFinalizarTemporizador']
   })
 </script>
