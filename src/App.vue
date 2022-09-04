@@ -4,7 +4,7 @@
       <BarraLateralVue />
     </div>
     <div class="column is-three-quarter">
-      <FormularioVue />
+      <FormularioVue @aoSalvarTarefa="salvarTarefa" />
       <div class="lista">
         <TarefaVue
             v-for="(tarefa, indice) of tarefas"
@@ -33,6 +33,11 @@
       TarefaVue,
       BarraLateralVue,
       FormularioVue
+    },
+    methods: {
+      salvarTarefa(tarefa: TarefaInterface): void {
+        this.tarefas.push(tarefa);
+      }
     }
   });
 </script>
