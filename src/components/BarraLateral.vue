@@ -3,6 +3,9 @@
     <h1>
       <img src="../assets/logo.png" alt="">
     </h1>
+    <button class="button">
+      Ativar modo escuro
+    </button>
   </header>
 </template>
 
@@ -20,12 +23,14 @@
     width: 100%;
     height: 100vh;
     padding: 1rem;
+    text-align: center;
   }
 
   @media only screen and (max-width: 768px) {
     header {
         height: auto;
         padding: 2.5rem;
+        text-align: center;
     }
   }
 </style>
