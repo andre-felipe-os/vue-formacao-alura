@@ -3,7 +3,7 @@
     <div class="column is-one-quarter">
       <BarraLateralVue />
     </div>
-    <div class="column is-three-quarter">
+    <div class="column is-three-quarter conteudo">
       <FormularioVue @aoSalvarTarefa="salvarTarefa" />
       <div class="lista">
         <CaixaVue v-if="listaEstaVazia">
@@ -65,5 +65,9 @@
   main.modo-escuro {
     --fundo-primario: #2b2d42;
     --texto-primario: #dddddd;
+  }
+
+  .conteudo {
+    background-color: var(--fundo-primario);
   }
 </style>
