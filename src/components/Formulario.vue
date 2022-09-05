@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box formulario">
     <div class="columns">
       <div class="column is-8"
           role="form"
@@ -43,3 +43,10 @@
     }
   })
 </script>
+
+<style>
+  .formulario {
+    background-color: var(--fundo-primario);
+    color: var(--texto-primario);
+  }
+</style>
