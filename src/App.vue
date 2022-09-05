@@ -1,7 +1,8 @@
 <template>
-  <main class="columns is-gapless is-multiline modo-escuro">
+  <main class="columns is-gapless is-multiline"
+      v-bind:class="{ 'modo-escuro': modoEscuroAtivado }">
     <div class="column is-one-quarter">
-      <BarraLateralVue />
+      <BarraLateralVue @aoAlterarTema="trocarTema" />
     </div>
     <div class="column is-three-quarter conteudo">
       <FormularioVue @aoSalvarTarefa="salvarTarefa" />
@@ -30,6 +31,7 @@
     name: 'App',
     data() {
       return {
+        modoEscuroAtivado: false,
         tarefas: new Array<TarefaInterface>()
       }
     },
@@ -45,6 +47,9 @@
       FormularioVue
     },
     methods: {
+      trocarTema(modoEscuroAtivado: boolean): void {
+        this.modoEscuroAtivado = modoEscuroAtivado;
+      },
       salvarTarefa(tarefa: TarefaInterface): void {
         this.tarefas.push(tarefa);
       }
