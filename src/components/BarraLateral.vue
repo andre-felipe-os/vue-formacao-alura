@@ -3,8 +3,8 @@
     <h1>
       <img src="../assets/logo.png" alt="">
     </h1>
-    <button class="button">
-      Ativar modo escuro
+    <button class="button" @click="alterarTema">
+      Alterar tema
     </button>
   </header>
 </template>
@@ -13,7 +13,19 @@
   import { defineComponent } from "vue";
 
   export default defineComponent({
-    name: 'BarraLateral'
+    name: 'BarraLateral',
+    emits: ['aoAlterarTema'],
+    data() {
+      return {
+        modoEscuroAtivado: false
+      }
+    },
+    methods: {
+      alterarTema(): void {
+        this.modoEscuroAtivado = !this.modoEscuroAtivado;
+        this.$emit('aoAlterarTema', this.modoEscuroAtivado);
+      }
+    }
   })
 </script>
 
