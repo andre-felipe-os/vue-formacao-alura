@@ -56,4 +56,14 @@
   .lista {
     padding: 1.25rem;
   }
+
+  main {
+    --fundo-primario: #ffffff;
+    --texto-primario: #000000;
+  }
+
+  main.modo-escuro {
+    --fundo-primario: #2b2d42;
+    --texto-primario: #dddddd;
+  }
 </style>
