@@ -4,7 +4,7 @@
       <img src="../assets/logo.png" alt="">
     </h1>
     <button class="button" @click="alterarTema">
-      Alterar tema
+      {{ textoDoBotao }}
     </button>
   </header>
 </template>
@@ -18,6 +18,14 @@
     data() {
       return {
         modoEscuroAtivado: false
+      }
+    },
+    computed: {
+      textoDoBotao() {
+        if (this.modoEscuroAtivado) {
+          return 'Desativar modo escuro';
+        }
+        return 'Ativar modo escuro';
       }
     },
     methods: {
