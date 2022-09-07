@@ -3,4 +3,8 @@ import App from './App.vue'
 
 import '@fortawesome/fontawesome-free/css/all.css'
 
-createApp(App).mount('#app')
+import roteador from './routers'
+
+createApp(App)
+    .use(roteador)
+    .mount('#app')
