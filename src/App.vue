@@ -5,16 +5,7 @@
       <BarraLateralVue @aoAlterarTema="trocarTema" />
     </div>
     <div class="column is-three-quarter conteudo">
-      <FormularioVue @aoSalvarTarefa="salvarTarefa" />
-      <div class="lista">
-        <CaixaVue v-if="listaEstaVazia">
-          Você não acompanhou nenhuma tarefa hoje.
-        </CaixaVue>
-        <TarefaVue
-            v-for="(tarefa, indice) of tarefas"
-            v-bind:key="indice"
-            v-bind:tarefa="tarefa" />
-      </div>
+      <RouterView></RouterView>
     </div>
   </main>
 </template>
@@ -22,10 +13,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import TarefaInterface from './interfaces/TarefaInterface';
-  import CaixaVue from './components/Caixa.vue';
   import BarraLateralVue from './components/BarraLateral.vue';
-  import FormularioVue from './components/Formulario.vue';
-  import TarefaVue from './components/Tarefa.vue';
 
   export default defineComponent({
     name: 'App',
@@ -41,10 +29,7 @@
       }
     },
     components: {
-      CaixaVue,
-      TarefaVue,
-      BarraLateralVue,
-      FormularioVue
+      BarraLateralVue
     },
     methods: {
       trocarTema(modoEscuroAtivado: boolean): void {
