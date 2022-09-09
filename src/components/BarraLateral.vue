@@ -66,14 +66,6 @@
     text-align: center;
   }
 
-  @media only screen and (max-width: 768px) {
-    header {
-        height: auto;
-        padding: 2.5rem;
-        text-align: center;
-    }
-  }
-
   i {
     margin: 0px 5px;
   }
@@ -98,5 +90,17 @@
 
   .link.router-link-active {
     color: #faf0ca;
+  }
+
+  @media only screen and (max-width: 768px) {
+    header {
+      height: auto;
+      padding: 2.5rem;
+      text-align: center;
+    }
+
+    .panel li {
+      text-align: center;
+    }
   }
 </style>
