@@ -19,6 +19,20 @@
         </button>
       </div>
     </form>
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NOME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="projeto of projetos" v-bind:key="projeto.id">
+          <td>{{ projeto.id }}</td>
+          <td>{{ projeto.nome }}</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 </template>
 
