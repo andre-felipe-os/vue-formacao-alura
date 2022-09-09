@@ -6,6 +6,10 @@ import ProjetosView from '../views/ProjetosView.vue'
 const rotas: Array<RouteRecordRaw> = [
     {
         path: '/',
+        redirect: { name: 'Tarefas'}
+    },
+    {
+        path: '/tarefas',
         name: 'Tarefas',
         component: TarefasView
     },

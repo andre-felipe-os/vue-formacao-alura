@@ -10,7 +10,7 @@
       <ul>
         <li>
           <router-link
-              to="/"
+              to="/tarefas"
               class="link">
             <i class="fas fa-tasks"></i>
             Tarefas
