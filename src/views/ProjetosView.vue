@@ -47,3 +47,9 @@
     }
   });
 </script>
+
+<style scoped>
+  .projetos {
+    padding: 1.25rem;
+  }
+</style>
