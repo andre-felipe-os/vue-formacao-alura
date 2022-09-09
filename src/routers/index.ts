@@ -1,12 +1,18 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 import TarefasView from '../views/TarefasView.vue'
+import ProjetosView from '../views/ProjetosView.vue'
 
 const rotas: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'Tarefas',
         component: TarefasView
+    },
+    {
+        path: '/projetos',
+        name: 'Projetos',
+        component: ProjetosView
     }
 ];
 
