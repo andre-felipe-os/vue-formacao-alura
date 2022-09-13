@@ -18,7 +18,9 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
+  import { computed, defineComponent } from 'vue';
+  import { useStore } from 'vuex';
+  import { key } from '../stores';
   import TemporizadorVue from './Temporizador.vue';
 
   export default defineComponent({
@@ -39,6 +41,12 @@
           descricao: this.descricao
         });
         this.descricao = '';
+      }
+    },
+    setup() {
+      const store = useStore(key);
+      return {
+        projetos: computed(() => store.state.projetos)
       }
     }
   })
