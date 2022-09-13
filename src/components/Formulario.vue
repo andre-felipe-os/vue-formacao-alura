@@ -53,7 +53,8 @@
       finalizarTarefa(tempoEmSegundos: number): void {
         this.$emit('aoSalvarTarefa', {
           duracaoEmSegundos: tempoEmSegundos,
-          descricao: this.descricao
+          descricao: this.descricao,
+          projeto: this.projetos.find(projeto => projeto.id == this.idDoProjeto)
         });
         this.descricao = '';
       }
