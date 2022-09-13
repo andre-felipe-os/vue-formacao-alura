@@ -1,7 +1,7 @@
 <template>
   <div class="box formulario">
     <div class="columns">
-      <div class="column is-8"
+      <div class="column is-5"
           role="form"
           aria-label="Formulário para criação de uma nova tarefa">
         <input
@@ -9,6 +9,20 @@
             class="input"
             placeholder="Qual tarefa você deseja iniciar?"
             v-model="descricao" />
+      </div>
+      <div class="column is-3">
+        <div class="select">
+          <select v-model="idDoProjeto">
+            <option value="">
+              Selecione o projeto
+            </option>
+            <option v-bind:value="projeto.id"
+                v-for="projeto of projetos"
+                v-bind:key="projeto.id">
+              {{ projeto.nome }}
+            </option>
+          </select>
+        </div>
       </div>
       <div class="column">
         <TemporizadorVue @aoFinalizarTemporizador="finalizarTarefa"/>
@@ -28,6 +42,7 @@
     emits: ['aoSalvarTarefa'],
     data() {
       return {
+        idDoProjeto: '',
         descricao: ''
       }
     },
