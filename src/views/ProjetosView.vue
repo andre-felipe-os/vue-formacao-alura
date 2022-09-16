@@ -37,23 +37,23 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from "vue";
+  import { computed, defineComponent } from "vue";
 
   import { useStore } from "@/stores";
-
-  import ProjetoInterface from "../interfaces/ProjetoInterface";
 
   export default defineComponent({
     name: 'ProjetosView',
     data() {
       return {
         nomeDoProjeto: '',
-        projetos: new Array<ProjetoInterface>()
       }
     },
     setup() {
       const store = useStore();
-      return { store };
+      return {
+        store,
+        projetos: computed(() => store.state.projetos)
+      };
     },
     methods: {
       salvar(): void {
