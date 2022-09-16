@@ -10,19 +10,6 @@ export const key: InjectionKey<Store<EstadoInterface>> = Symbol();
 
 export const store = createStore<EstadoInterface>({
     state: {
-        projetos: [
-            {
-                id: new Date().toISOString(),
-                nome: 'Formação TypeScript'
-            },
-            {
-                id: new Date().toISOString(),
-                nome: 'Formação Vue.js 3'
-            },
-            {
-                id: new Date().toISOString(),
-                nome: 'Formação Spring'
-            }
-        ]
+        projetos: Array<ProjetoInterface>()
     }
 });
