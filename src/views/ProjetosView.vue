@@ -39,6 +39,8 @@
 <script lang="ts">
   import { defineComponent } from "vue";
 
+  import { useStore } from "@/stores";
+
   import ProjetoInterface from "../interfaces/ProjetoInterface";
 
   export default defineComponent({
@@ -48,6 +50,10 @@
         nomeDoProjeto: '',
         projetos: new Array<ProjetoInterface>()
       }
+    },
+    setup() {
+      const store = useStore();
+      return { store };
     },
     methods: {
       salvar(): void {
