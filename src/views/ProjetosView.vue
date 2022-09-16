@@ -57,11 +57,7 @@
     },
     methods: {
       salvar(): void {
-        const projeto: ProjetoInterface = {
-          id: new Date().toISOString(),
-          nome: this.nomeDoProjeto
-        }
-        this.projetos.push(projeto);
+        this.store.commit('ADICIONA_PROJETO', this.nomeDoProjeto);
         this.nomeDoProjeto = '';
       }
     }
