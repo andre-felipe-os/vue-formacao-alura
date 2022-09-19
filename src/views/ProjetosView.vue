@@ -1,6 +1,14 @@
 <template>
   <section class="projetos">
     <h1 class="title">Projetos</h1>
+    <router-link to="/projetos/adicionar-projeto" class="button">
+      <span class="icon is-small">
+        <i class="fas fa-plus"></i>
+      </span>
+      <span>
+        Novo projeto
+      </span>
+    </router-link>
     <table class="table is-fullwidth">
       <thead>
         <tr>
