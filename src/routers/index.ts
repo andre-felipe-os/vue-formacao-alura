@@ -27,7 +27,8 @@ const rotas: Array<RouteRecordRaw> = [
     {
         path: '/projetos/editar-projeto/:id',
         name: 'Editar projeto',
-        component: FormularioView
+        component: FormularioView,
+        props: true
     }
 ];
 

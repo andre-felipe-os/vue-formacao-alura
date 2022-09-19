@@ -29,6 +29,11 @@
 
   export default defineComponent({
     name: 'FormularioView',
+    props: {
+      id: {
+        type: String
+      }
+    },
     data() {
       return {
         nomeDoProjeto: '',
