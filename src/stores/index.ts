@@ -19,6 +19,11 @@ export const store = createStore<EstadoInterface>({
                 nome: nomeDoProjeto
             } as ProjetoInterface;
             state.projetos.push(projeto);
+        },
+        'ALTERA_PROJETO'(state, projetoAlterado: ProjetoInterface): void {
+            const index = state.projetos
+                .findIndex(projeto => projeto.id == projetoAlterado.id);
+            state.projetos[index] = projetoAlterado;
         }
     }
 });
