@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 import TarefasView from '../views/TarefasView.vue'
 import ProjetosView from '../views/ProjetosView.vue'
-import FormularioView from '../views/projetos/FormularioView.vue'
+import FormularioView from '../views/projetos/Formulario.vue'
 
 const rotas: Array<RouteRecordRaw> = [
     {
