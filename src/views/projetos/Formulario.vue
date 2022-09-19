@@ -44,6 +44,7 @@
       salvar(): void {
         this.store.commit('ADICIONA_PROJETO', this.nomeDoProjeto);
         this.nomeDoProjeto = '';
+        this.$router.push('/projetos');
       }
     }
   });
