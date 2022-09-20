@@ -43,12 +43,13 @@
   import { computed, defineComponent } from "vue";
 
   import { useStore } from "@/stores";
+  import { EXCLUI_PROJETO } from "@/stores/tipos-de-mutacoes";
 
   export default defineComponent({
     name: 'ListaView',
     methods: {
       excluir(id: string): void {
-        this.store.commit('EXCLUI_PROJETO', id);
+        this.store.commit(EXCLUI_PROJETO, id);
       }
     },
     setup() {
