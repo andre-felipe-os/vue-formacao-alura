@@ -21,7 +21,8 @@
           <td>{{ projeto.id }}</td>
           <td>{{ projeto.nome }}</td>
           <td>
-            <router-link :to="`/projetos/editar-projeto/${projeto.id}`" class="button">
+            <router-link v-bind:to="`/projetos/editar-projeto/${projeto.id}`"
+                class="button is-warning">
               <span class="icon is-small">
                 <i class="fas fa-pencil-alt"></i>
               </span>
