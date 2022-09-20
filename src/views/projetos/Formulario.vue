@@ -1,6 +1,5 @@
 <template>
-  <section class="projetos">
-    <h1 class="title">Projetos</h1>
+  <section>
     <form @submit.prevent="salvar" class="columns">
       <div class="field column is-10">
         <label for="nomeDoProjeto" class="label">
@@ -68,9 +67,3 @@
     }
   });
 </script>
-
-<style scoped>
-  .projetos {
-    padding: 1.25rem;
-  }
-</style>
