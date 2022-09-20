@@ -1,0 +1,50 @@
+<template>
+  <section>
+    <router-link to="/projetos/adicionar-projeto" class="button">
+      <span class="icon is-small">
+        <i class="fas fa-plus"></i>
+      </span>
+      <span>
+        Novo projeto
+      </span>
+    </router-link>
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NOME</th>
+          <th>AÇÕES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="projeto of projetos" v-bind:key="projeto.id">
+          <td>{{ projeto.id }}</td>
+          <td>{{ projeto.nome }}</td>
+          <td>
+            <router-link :to="`/projetos/editar-projeto/${projeto.id}`" class="button">
+              <span class="icon is-small">
+                <i class="fas fa-pencil-alt"></i>
+              </span>
+            </router-link>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</template>
+
+<script lang="ts">
+  import { computed, defineComponent } from "vue";
+
+  import { useStore } from "@/stores";
+
+  export default defineComponent({
+    name: 'ListaView',
+    setup() {
+      const store = useStore();
+      return {
+        projetos: computed(() => store.state.projetos)
+      };
+    }
+  });
+</script>
