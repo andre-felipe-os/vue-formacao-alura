@@ -24,6 +24,10 @@ export const store = createStore<EstadoInterface>({
             const index = state.projetos
                 .findIndex(projeto => projeto.id == projetoAlterado.id);
             state.projetos[index] = projetoAlterado;
+        },
+        'EXCLUI_PROJETO'(state, idDoProjeto: string): void {
+            state.projetos = state.projetos
+                .filter(projeto => projeto.id != idDoProjeto);
         }
     }
 });
