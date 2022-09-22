@@ -1,3 +1,4 @@
+import { NotificacaoInterface } from "@/interfaces/NotificacaoInterface";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import ProjetoInterface from "../interfaces/ProjetoInterface";
@@ -5,12 +6,14 @@ import { ADICIONA_PROJETO, ALTERA_PROJETO, EXCLUI_PROJETO } from "./tipos-de-mut
 
 interface EstadoInterface {
     projetos: Array<ProjetoInterface>;
+    notificacoes: Array<NotificacaoInterface>;
 }
 
 export const key: InjectionKey<Store<EstadoInterface>> = Symbol();
 
 export const store = createStore<EstadoInterface>({
     state: {
+        notificacoes: Array<NotificacaoInterface>(),
         projetos: Array<ProjetoInterface>()
     },
     mutations: {
