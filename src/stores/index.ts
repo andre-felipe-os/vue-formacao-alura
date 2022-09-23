@@ -2,7 +2,7 @@ import { NotificacaoInterface } from "@/interfaces/NotificacaoInterface";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import ProjetoInterface from "../interfaces/ProjetoInterface";
-import { ADICIONA_PROJETO, ALTERA_PROJETO, EXCLUI_PROJETO } from "./tipos-de-mutacoes";
+import { ADICIONA_PROJETO, ALTERA_PROJETO, EXCLUI_PROJETO, NOTIFICAR } from "./tipos-de-mutacoes";
 
 interface EstadoInterface {
     projetos: Array<ProjetoInterface>;
@@ -32,6 +32,15 @@ export const store = createStore<EstadoInterface>({
         [EXCLUI_PROJETO](state, idDoProjeto: string): void {
             state.projetos = state.projetos
                 .filter(projeto => projeto.id != idDoProjeto);
+        },
+        [NOTIFICAR](state, novaNotificacao: NotificacaoInterface) {
+            novaNotificacao.id = new Date().getTime();
+            state.notificacoes.push(novaNotificacao);
+            setTimeout(() => {
+                state.notificacoes = state.notificacoes.filter(notificacao => {
+                    notificacao.id != novaNotificacao.id;
+                });
+            }, 10000);
         }
     }
 });
