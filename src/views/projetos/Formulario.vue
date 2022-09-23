@@ -64,11 +64,14 @@
           this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto);
         }
         this.nomeDoProjeto = '';
-        this.store.commit(NOTIFICAR, {
-          tipo: TipoNotificacao.SUCESSO,
-          texto: 'O projeto foi salvo.'
-        });
+        this.notificar(TipoNotificacao.SUCESSO, 'O projeto foi salvo.');
         this.$router.push('/projetos');
+      },
+      notificar(tipoDaNootificacao: TipoNotificacao, mensagem: string): void {
+        this.store.commit(NOTIFICAR, {
+          tipo: tipoDaNootificacao,
+          texto: mensagem
+        });
       }
     }
   });
