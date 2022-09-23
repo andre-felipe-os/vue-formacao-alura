@@ -25,7 +25,8 @@
   import { defineComponent } from "vue";
 
   import { useStore } from "@/stores";
-  import { ALTERA_PROJETO, ADICIONA_PROJETO } from "@/stores/tipos-de-mutacoes";
+  import { ALTERA_PROJETO, ADICIONA_PROJETO, NOTIFICAR } from "@/stores/tipos-de-mutacoes";
+  import { TipoNotificacao } from "@/interfaces/NotificacaoInterface";
 
   export default defineComponent({
     name: 'FormularioView',
@@ -63,6 +64,10 @@
           this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto);
         }
         this.nomeDoProjeto = '';
+        this.store.commit(NOTIFICAR, {
+          tipo: TipoNotificacao.SUCESSO,
+          texto: 'O projeto foi salvo.'
+        });
         this.$router.push('/projetos');
       }
     }
