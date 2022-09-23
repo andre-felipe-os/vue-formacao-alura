@@ -67,11 +67,8 @@
         this.notificar(TipoNotificacao.SUCESSO, 'O projeto foi salvo.');
         this.$router.push('/projetos');
       },
-      notificar(tipoDaNootificacao: TipoNotificacao, mensagem: string): void {
-        this.store.commit(NOTIFICAR, {
-          tipo: tipoDaNootificacao,
-          texto: mensagem
-        });
+      notificar(tipo: TipoNotificacao, texto: string): void {
+        this.store.commit(NOTIFICAR, { tipo, texto });
       }
     }
   });
