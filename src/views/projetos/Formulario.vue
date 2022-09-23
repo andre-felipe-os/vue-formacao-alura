@@ -27,6 +27,7 @@
   import { useStore } from "@/stores";
   import { ALTERA_PROJETO, ADICIONA_PROJETO, NOTIFICAR } from "@/stores/tipos-de-mutacoes";
   import { TipoNotificacao } from "@/interfaces/NotificacaoInterface";
+  import { notificacaoMixin } from "@/mixins/notificar";
 
   export default defineComponent({
     name: 'FormularioView',
@@ -67,9 +68,9 @@
         this.notificar(TipoNotificacao.SUCESSO, 'O projeto foi salvo.');
         this.$router.push('/projetos');
       },
-      notificar(tipo: TipoNotificacao, mensagem: string): void {
-        this.store.commit(NOTIFICAR, { tipo, mensagem });
-      }
-    }
+    },
+    mixins: [
+      notificacaoMixin,
+    ],
   });
 </script>
