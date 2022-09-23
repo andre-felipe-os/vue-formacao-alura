@@ -1,10 +1,13 @@
 <template>
   <CaixaVue>
     <div class="columns">
-      <div class="column is-7">
+      <div class="column is-5">
         {{ tarefa.descricao || "Tarefa sem descrição" }}
       </div>
-      <div class="column">
+      <div class="column is-5">
+        {{ tarefa.projeto?.nome || 'N/D' }}
+      </div>
+      <div class="column is-2">
         <CronometroVue :tempoEmSegundos="tarefa.duracaoEmSegundos"/>
       </div>
     </div>
