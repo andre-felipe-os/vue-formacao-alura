@@ -27,7 +27,7 @@
   import { useStore } from "@/stores";
   import { ALTERA_PROJETO, ADICIONA_PROJETO, NOTIFICAR } from "@/stores/tipos-de-mutacoes";
   import { TipoNotificacao } from "@/interfaces/NotificacaoInterface";
-  import { notificacaoMixin } from "@/mixins/notificar";
+  import useNotificador from '@/hooks/notificador';
 
   export default defineComponent({
     name: 'FormularioView',
@@ -50,8 +50,10 @@
     },
     setup() {
       const store = useStore();
+      const { notificar } = useNotificador();
       return {
-        store
+        store,
+        notificar,
       };
     },
     methods: {
@@ -69,8 +71,5 @@
         this.$router.push('/projetos');
       },
     },
-    mixins: [
-      notificacaoMixin,
-    ],
   });
 </script>
