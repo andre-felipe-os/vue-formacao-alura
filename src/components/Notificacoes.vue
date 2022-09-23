@@ -5,7 +5,7 @@
         v-for="notificacao of notificacoes"
         v-bind:key="notificacao.id">
       <button class="delete"></button>
-      {{ notificacao.texto }}
+      {{ notificacao.mensagem }}
     </article>
   </div>
 </template>

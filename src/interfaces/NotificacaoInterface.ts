@@ -7,5 +7,5 @@ export enum TipoNotificacao {
 export interface NotificacaoInterface {
     id: number;
     tipo: TipoNotificacao;
-    texto: string;
+    mensagem: string;
 }
