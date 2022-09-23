@@ -1,7 +1,7 @@
 <template>
   <div class="notificacoes">
     <article class="notification"
-        v-bind:class="recuperaClasseCssPeloTipo(notificacao.tipo)"
+        v-bind:class="contexto[notificacao.tipo]"
         v-for="notificacao of notificacoes"
         v-bind:key="notificacao.id">
       <button class="delete"></button>
@@ -17,17 +17,12 @@ import { computed, defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'NotificacoesVue',
-  methods: {
-    recuperaClasseCssPeloTipo(tipo: TipoNotificacao): string {
-        switch (tipo) {
-            case TipoNotificacao.SUCESSO:
-                return 'is-success';
-            case TipoNotificacao.ATENCAO:
-                return 'is-warning';
-            case TipoNotificacao.FALHA:
-                return 'is-danger';
-            default:
-                return '';
+  data() {
+    return {
+        contexto: {
+            [TipoNotificacao.SUCESSO]: 'is-success',
+            [TipoNotificacao.ATENCAO]: 'is-warning',
+            [TipoNotificacao.FALHA]: 'is-danger'
         }
     }
   },
