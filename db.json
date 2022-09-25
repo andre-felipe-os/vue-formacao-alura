@@ -1,0 +1,20 @@
+{
+  "projetos": [
+    {
+      "id": 1,
+      "nome": "Formação TypeScript da Alura"
+    },
+    {
+      "id": 2,
+      "nome": "Formação Vue.js 3 da Alura"
+    },
+    {
+      "id": 3,
+      "nome": "Formação Java e OO da Alura"
+    },
+    {
+      "id": 4,
+      "nome": "Formação Spring da Alura"
+    }
+  ]
+}
