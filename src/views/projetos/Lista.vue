@@ -44,6 +44,7 @@
 
   import { useStore } from "@/stores";
   import { EXCLUI_PROJETO } from "@/stores/tipos-de-mutacoes";
+  import { OBTER_PROJETOS } from "@/stores/tipos-de-acoes";
 
   export default defineComponent({
     name: 'ListaView',
@@ -54,6 +55,7 @@
     },
     setup() {
       const store = useStore();
+      store.dispatch(OBTER_PROJETOS);
       return {
         store,
         projetos: computed(() => store.state.projetos)
