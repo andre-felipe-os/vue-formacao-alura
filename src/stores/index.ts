@@ -1,7 +1,9 @@
+import clienteHttp from "@/http";
 import { NotificacaoInterface } from "@/interfaces/NotificacaoInterface";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import ProjetoInterface from "../interfaces/ProjetoInterface";
+import { OBTER_PROJETOS } from "./tipos-de-acoes";
 import { ADICIONA_PROJETO, ALTERA_PROJETO, DEFINIR_PROJETOS, EXCLUI_PROJETO, NOTIFICAR, REMOVE_NOTIFICACAO } from "./tipos-de-mutacoes";
 
 interface EstadoInterface {
@@ -50,7 +52,13 @@ export const store = createStore<EstadoInterface>({
                 notificacao.id != idDaNotificacao;
             });
         }
-    }
+    },
+    actions: {
+        [OBTER_PROJETOS]({ commit }) {
+            clienteHttp.get("projetos")
+                .then(resposta => commit(DEFINIR_PROJETOS, resposta.data));
+        }
+    },
 });
 
 export function useStore(): Store<EstadoInterface> {
