@@ -1,9 +1,10 @@
 import clienteHttp from "@/http";
 import { NotificacaoInterface } from "@/interfaces/NotificacaoInterface";
+import { AxiosResponse } from "axios";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import ProjetoInterface from "../interfaces/ProjetoInterface";
-import { OBTER_PROJETOS } from "./tipos-de-acoes";
+import { CADASTRAR_PROJETO, OBTER_PROJETOS } from "./tipos-de-acoes";
 import { ADICIONA_PROJETO, ALTERA_PROJETO, DEFINIR_PROJETOS, EXCLUI_PROJETO, NOTIFICAR, REMOVE_NOTIFICACAO } from "./tipos-de-mutacoes";
 
 interface EstadoInterface {
@@ -57,7 +58,12 @@ export const store = createStore<EstadoInterface>({
         [OBTER_PROJETOS]({ commit }) {
             clienteHttp.get("projetos")
                 .then(resposta => commit(DEFINIR_PROJETOS, resposta.data));
-        }
+        },
+        [CADASTRAR_PROJETO](contexto, nomeDoProjeto: string): Promise<AxiosResponse> {
+            return clienteHttp.post("/projetos", {
+                nome: nomeDoProjeto,
+            });
+        },
     },
 });
 
