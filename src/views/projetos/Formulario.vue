@@ -25,9 +25,10 @@
   import { defineComponent } from "vue";
 
   import { useStore } from "@/stores";
-  import { ALTERA_PROJETO, ADICIONA_PROJETO } from "@/stores/tipos-de-mutacoes";
+  import { ALTERA_PROJETO } from "@/stores/tipos-de-mutacoes";
   import { TipoNotificacao } from "@/interfaces/NotificacaoInterface";
   import useNotificador from '@/hooks/notificador';
+  import { CADASTRAR_PROJETO } from "@/stores/tipos-de-acoes";
 
   export default defineComponent({
     name: 'FormularioView',
@@ -64,11 +65,13 @@
             nome: this.nomeDoProjeto
           });
         } else {
-          this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto);
+          this.store.dispatch(CADASTRAR_PROJETO, this.nomeDoProjeto)
+            .then(() => {
+              this.nomeDoProjeto = "";
+              this.notificar(TipoNotificacao.SUCESSO, 'O projeto foi salvo.');
+              this.$router.push('/projetos');
+            });
         }
-        this.nomeDoProjeto = '';
-        this.notificar(TipoNotificacao.SUCESSO, 'O projeto foi salvo.');
-        this.$router.push('/projetos');
       },
     },
   });
