@@ -4,7 +4,7 @@ import { AxiosResponse } from "axios";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import ProjetoInterface from "../interfaces/ProjetoInterface";
-import { CADASTRAR_PROJETO, OBTER_PROJETOS } from "./tipos-de-acoes";
+import { ALTERAR_PROJETO, CADASTRAR_PROJETO, OBTER_PROJETOS } from "./tipos-de-acoes";
 import { ADICIONA_PROJETO, ALTERA_PROJETO, DEFINIR_PROJETOS, EXCLUI_PROJETO, NOTIFICAR, REMOVE_NOTIFICACAO } from "./tipos-de-mutacoes";
 
 interface EstadoInterface {
@@ -63,6 +63,9 @@ export const store = createStore<EstadoInterface>({
             return clienteHttp.post("/projetos", {
                 nome: nomeDoProjeto,
             });
+        },
+        [ALTERAR_PROJETO](contexto, projeto: ProjetoInterface): Promise<AxiosResponse> {
+            return clienteHttp.put(`/projetos/${projeto.id}`, projeto);
         },
     },
 });
