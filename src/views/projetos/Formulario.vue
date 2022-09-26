@@ -62,19 +62,16 @@
           this.store.dispatch(ALTERAR_PROJETO, {
             id: this.id,
             nome: this.nomeDoProjeto
-          }).then(() => {
-            this.nomeDoProjeto = "";
-            this.notificar(TipoNotificacao.SUCESSO, 'O projeto foi salvo.');
-            this.$router.push('/projetos');
-          });
+          }).then(() => this.lidaComSucesso());
         } else {
           this.store.dispatch(CADASTRAR_PROJETO, this.nomeDoProjeto)
-            .then(() => {
-              this.nomeDoProjeto = "";
-              this.notificar(TipoNotificacao.SUCESSO, 'O projeto foi salvo.');
-              this.$router.push('/projetos');
-            });
+            .then(() => this.lidaComSucesso());
         }
+      },
+      lidaComSucesso(): void {
+        this.nomeDoProjeto = "";
+        this.notificar(TipoNotificacao.SUCESSO, 'O projeto foi salvo.');
+        this.$router.push('/projetos');
       },
     },
   });
