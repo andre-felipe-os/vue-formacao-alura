@@ -67,8 +67,9 @@ export const store = createStore<EstadoInterface>({
         [ALTERAR_PROJETO](contexto, projeto: ProjetoInterface): Promise<AxiosResponse> {
             return clienteHttp.put(`/projetos/${projeto.id}`, projeto);
         },
-        [REMOVER_PROJETO](contexto, idDoProjeto: string) {
-            return clienteHttp.delete(`/projetos/${idDoProjeto}`);
+        [REMOVER_PROJETO]({ commit }, idDoProjeto: string) {
+            return clienteHttp.delete(`/projetos/${idDoProjeto}`)
+                .then(() => commit(EXCLUI_PROJETO, idDoProjeto));
         },
     },
 });
