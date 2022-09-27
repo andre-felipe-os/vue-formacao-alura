@@ -13,21 +13,18 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
+  import { computed, defineComponent } from 'vue';
 
   import TarefaInterface from '../interfaces/TarefaInterface';
 
   import CaixaVue from '../components/Caixa.vue';
   import FormularioVue from '../components/Formulario.vue';
   import TarefaVue from '../components/Tarefa.vue';
+  import { useStore } from '@/stores';
+  import { OBTER_TAREFAS } from '@/stores/tipos-de-acoes';
 
   export default defineComponent({
     name: 'TarefasView',
-    data() {
-      return {
-        tarefas: new Array<TarefaInterface>()
-      }
-    },
     computed: {
       listaEstaVazia(): boolean {
         return this.tarefas.length === 0;
@@ -37,6 +34,14 @@
       CaixaVue,
       TarefaVue,
       FormularioVue
+    },
+    setup() {
+      const store = useStore();
+      store.dispatch(OBTER_TAREFAS);
+      return {
+        tarefas: computed(() => store.state.tarefas),
+        store,
+      }
     },
     methods: {
       salvarTarefa(tarefa: TarefaInterface): void {
