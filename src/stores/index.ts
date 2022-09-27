@@ -5,7 +5,7 @@ import { AxiosResponse } from "axios";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import ProjetoInterface from "../interfaces/ProjetoInterface";
-import { ALTERAR_PROJETO, CADASTRAR_PROJETO, OBTER_PROJETOS, REMOVER_PROJETO } from "./tipos-de-acoes";
+import { ALTERAR_PROJETO, CADASTRAR_PROJETO, OBTER_PROJETOS, OBTER_TAREFAS, REMOVER_PROJETO } from "./tipos-de-acoes";
 import { ADICIONA_PROJETO, ALTERA_PROJETO, DEFINIR_PROJETOS, DEFINIR_TAREFAS, EXCLUI_PROJETO, NOTIFICAR, REMOVE_NOTIFICACAO } from "./tipos-de-mutacoes";
 
 interface EstadoInterface {
@@ -76,6 +76,10 @@ export const store = createStore<EstadoInterface>({
         [REMOVER_PROJETO]({ commit }, idDoProjeto: string) {
             return clienteHttp.delete(`/projetos/${idDoProjeto}`)
                 .then(() => commit(EXCLUI_PROJETO, idDoProjeto));
+        },
+        [OBTER_TAREFAS]({ commit }) {
+            clienteHttp.get("tarefas")
+                .then(resposta => commit(DEFINIR_TAREFAS, resposta.data));
         },
     },
 });
