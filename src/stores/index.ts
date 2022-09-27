@@ -1,5 +1,6 @@
 import clienteHttp from "@/http";
 import { NotificacaoInterface } from "@/interfaces/NotificacaoInterface";
+import TarefaInterface from "@/interfaces/TarefaInterface";
 import { AxiosResponse } from "axios";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
@@ -8,6 +9,7 @@ import { ALTERAR_PROJETO, CADASTRAR_PROJETO, OBTER_PROJETOS, REMOVER_PROJETO } f
 import { ADICIONA_PROJETO, ALTERA_PROJETO, DEFINIR_PROJETOS, EXCLUI_PROJETO, NOTIFICAR, REMOVE_NOTIFICACAO } from "./tipos-de-mutacoes";
 
 interface EstadoInterface {
+    tarefas: Array<TarefaInterface>;
     projetos: Array<ProjetoInterface>;
     notificacoes: Array<NotificacaoInterface>;
 }
@@ -16,6 +18,7 @@ export const key: InjectionKey<Store<EstadoInterface>> = Symbol();
 
 export const store = createStore<EstadoInterface>({
     state: {
+        tarefas: Array<TarefaInterface>(),
         notificacoes: Array<NotificacaoInterface>(),
         projetos: Array<ProjetoInterface>()
     },
