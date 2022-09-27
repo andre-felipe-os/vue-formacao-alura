@@ -16,5 +16,16 @@
       "id": 4,
       "nome": "Formação Spring da Alura"
     }
+  ],
+  "tarefas": [
+    {
+      "id": 1,
+      "duracaoEmSegundos":120,
+      "descricao": "Configuração do ambiente",
+      "projeto": {
+        "id": 1,
+        "nome": "Formação TypeScript da Alura"
+      }
+    }
   ]
 }
