@@ -21,7 +21,7 @@
   import FormularioVue from '../components/Formulario.vue';
   import TarefaVue from '../components/Tarefa.vue';
   import { useStore } from '@/stores';
-  import { CADASTRAR_TAREFA, OBTER_TAREFAS } from '@/stores/tipos-de-acoes';
+  import { CADASTRAR_TAREFA, OBTER_PROJETOS, OBTER_TAREFAS } from '@/stores/tipos-de-acoes';
 
   export default defineComponent({
     name: 'TarefasView',
@@ -38,6 +38,7 @@
     setup() {
       const store = useStore();
       store.dispatch(OBTER_TAREFAS);
+      store.dispatch(OBTER_PROJETOS);
       return {
         tarefas: computed(() => store.state.tarefas),
         store,
