@@ -13,11 +13,17 @@
     <div class="modal"
         v-bind:class="{ 'is-active': tarefaSelecionada }"
         v-if="tarefaSelecionada">
-      <div class="modal-background"></div>
+      <div class="modal-background">
+      </div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Editando tarefa</p>
-          <button class="delete" aria-label="close" @click="fecharModal"></button>
+          <p class="modal-card-title">
+            Editando tarefa
+          </p>
+          <button class="delete"
+              aria-label="close"
+              @click="fecharModal">
+          </button>
         </header>
         <section class="modal-card-body">
           <div class="field column is-12">
@@ -32,8 +38,14 @@
           </div>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success" @click="alterarTarefa">Salvar mudanças</button>
-          <button class="button" @click="fecharModal">Cancelar</button>
+          <button class="button is-success"
+              @click="alterarTarefa">
+            Salvar mudanças
+          </button>
+          <button class="button"
+              @click="fecharModal">
+            Cancelar
+          </button>
         </footer>
       </div>
     </div>
