@@ -62,7 +62,7 @@
     setup() {
       const store = useStore(key);
       return {
-        projetos: computed(() => store.state.projeto.projetos)
+        projetos: computed(() => store.state.moduloProjeto.projetos)
       }
     }
   })

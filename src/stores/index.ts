@@ -11,7 +11,7 @@ import { ADICIONA_TAREFA, ALTERA_TAREFA, DEFINIR_TAREFAS, NOTIFICAR, REMOVE_NOTI
 export interface EstadoInterface {
     tarefas: Array<TarefaInterface>;
     notificacoes: Array<NotificacaoInterface>;
-    projeto: EstadoProjeto;
+    moduloProjeto: EstadoProjeto;
 }
 
 export const key: InjectionKey<Store<EstadoInterface>> = Symbol();
@@ -20,7 +20,7 @@ export const store = createStore<EstadoInterface>({
     state: {
         tarefas: Array<TarefaInterface>(),
         notificacoes: Array<NotificacaoInterface>(),
-        projeto: {
+        moduloProjeto: {
             projetos: Array<ProjetoInterface>(),
         }
     },

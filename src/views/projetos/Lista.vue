@@ -57,7 +57,7 @@
       store.dispatch(OBTER_PROJETOS);
       return {
         store,
-        projetos: computed(() => store.state.projeto.projetos)
+        projetos: computed(() => store.state.moduloProjeto.projetos)
       };
     }
   });
