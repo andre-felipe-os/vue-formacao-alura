@@ -32,7 +32,7 @@
           </div>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success">Salvar mudanças</button>
+          <button class="button is-success" @click="alterarTarefa">Salvar mudanças</button>
           <button class="button" @click="fecharModal">Cancelar</button>
         </footer>
       </div>
@@ -49,7 +49,7 @@
   import FormularioVue from '../components/Formulario.vue';
   import TarefaVue from '../components/Tarefa.vue';
   import { useStore } from '@/stores';
-  import { CADASTRAR_TAREFA, OBTER_PROJETOS, OBTER_TAREFAS } from '@/stores/tipos-de-acoes';
+  import { ALTERAR_TAREFA, CADASTRAR_TAREFA, OBTER_PROJETOS, OBTER_TAREFAS } from '@/stores/tipos-de-acoes';
 
   export default defineComponent({
     name: 'TarefasView',
@@ -86,7 +86,11 @@
       },
       salvarTarefa(tarefa: TarefaInterface): void {
         this.store.dispatch(CADASTRAR_TAREFA, tarefa);
-      }
+      },
+      alterarTarefa() {
+        this.store.dispatch(ALTERAR_TAREFA, this.tarefaSelecionada)
+          .then(() => this.fecharModal());
+      },
     }
   });
 </script>
