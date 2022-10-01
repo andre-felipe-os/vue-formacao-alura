@@ -15,14 +15,14 @@
       <div class="modal-card">
         <header class="modal-card-head">
           <p class="modal-card-title">Editando tarefa</p>
-          <button class="delete" aria-label="close"></button>
+          <button class="delete" aria-label="close" @click="fecharModal"></button>
         </header>
         <section class="modal-card-body">
           <!-- Conteúdo ... -->
         </section>
         <footer class="modal-card-foot">
           <button class="button is-success">Salvar mudanças</button>
-          <button class="button">Cancelar</button>
+          <button class="button" @click="fecharModal">Cancelar</button>
         </footer>
       </div>
     </div>
@@ -69,6 +69,9 @@
     methods: {
       selecionarTarefa(tarefaClicada: TarefaInterface): void {
         this.tarefaSelecionada = tarefaClicada;
+      },
+      fecharModal(): void {
+        this.tarefaSelecionada = null;
       },
       salvarTarefa(tarefa: TarefaInterface): void {
         this.store.dispatch(CADASTRAR_TAREFA, tarefa);
