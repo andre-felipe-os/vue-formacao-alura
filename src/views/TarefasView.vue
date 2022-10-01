@@ -9,6 +9,22 @@
         v-bind:key="indice"
         v-bind:tarefa="tarefa">
     </TarefaVue>
+    <div class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Editando tarefa</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Conteúdo ... -->
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success">Salvar mudanças</button>
+          <button class="button">Cancelar</button>
+        </footer>
+      </div>
+    </div>
   </div>
 </template>
 
