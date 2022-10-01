@@ -20,12 +20,26 @@
   "tarefas": [
     {
       "id": 1,
-      "duracaoEmSegundos":120,
+      "duracaoEmSegundos": 120,
       "descricao": "Configuração do ambiente",
       "projeto": {
         "id": 1,
         "nome": "Formação TypeScript da Alura"
       }
+    },
+    {
+      "duracaoEmSegundos": 5,
+      "descricao": "Aula de entrada e saída",
+      "projeto": {
+        "id": 3,
+        "nome": "Formação Java e OO da Alura"
+      },
+      "id": 2
+    },
+    {
+      "duracaoEmSegundos": 3,
+      "descricao": "Tarefa sem projeto",
+      "id": 3
     }
   ]
 }
