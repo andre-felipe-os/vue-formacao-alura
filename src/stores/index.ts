@@ -59,13 +59,13 @@ export const store = createStore<EstadoInterface>({
             clienteHttp.get("tarefas")
                 .then(resposta => commit(DEFINIR_TAREFAS, resposta.data));
         },
-        [CADASTRAR_TAREFA]({ commit }, tarefa: TarefaInterface): Promise<void> {
+        [CADASTRAR_TAREFA](contexto, tarefa: TarefaInterface): Promise<void> {
             return clienteHttp.post("/tarefas", tarefa)
                 .then(resposta => this.commit(ADICIONA_TAREFA, resposta.data));
         },
-        [ALTERAR_TAREFA]({ commit }, tarefa: TarefaInterface): Promise<void> {
+        [ALTERAR_TAREFA](contexto, tarefa: TarefaInterface): Promise<void> {
             return clienteHttp.put(`/tarefas/${tarefa.id}`, tarefa)
-                .then(resposta => this.commit(ALTERA_TAREFA, tarefa));
+                .then(() => this.commit(ALTERA_TAREFA, tarefa));
         },
     },
 });
