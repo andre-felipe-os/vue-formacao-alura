@@ -1,6 +1,6 @@
 <template>
   <CaixaVue>
-    <div class="columns">
+    <div class="columns clicavel" @click="tarefaClicada">
       <div class="column is-5">
         {{ tarefa.descricao || "Tarefa sem descrição" }}
       </div>
@@ -31,6 +31,18 @@
           type: Object as PropType<TarefaInterface>,
           required: true
         }
+      },
+      emits: ['tarefaFoiClicada'],
+      methods: {
+        tarefaClicada(): void {
+          this.$emit('tarefaFoiClicada', this.tarefa);
+        }
       }
   })
 </script>
+
+<style>
+  .clicavel {
+    cursor: pointer;
+  }
+</style>
