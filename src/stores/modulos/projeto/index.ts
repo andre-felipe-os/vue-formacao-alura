@@ -10,7 +10,7 @@ export interface EstadoProjeto {
     projetos: Array<ProjetoInterface>;
 }
 
-const projeto: Module<EstadoProjeto, EstadoInterface> = {
+export const projeto: Module<EstadoProjeto, EstadoInterface> = {
     actions: {
         [OBTER_PROJETOS]({ commit }) {
             clienteHttp.get("projetos")
