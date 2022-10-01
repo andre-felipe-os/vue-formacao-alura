@@ -5,7 +5,7 @@ import { AxiosResponse } from "axios";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import ProjetoInterface from "../interfaces/ProjetoInterface";
-import { ALTERAR_PROJETO, CADASTRAR_PROJETO, CADASTRAR_TAREFA, OBTER_PROJETOS, OBTER_TAREFAS, REMOVER_PROJETO } from "./tipos-de-acoes";
+import { ALTERAR_PROJETO, ALTERAR_TAREFA, CADASTRAR_PROJETO, CADASTRAR_TAREFA, OBTER_PROJETOS, OBTER_TAREFAS, REMOVER_PROJETO } from "./tipos-de-acoes";
 import { ADICIONA_PROJETO, ADICIONA_TAREFA, ALTERA_PROJETO, ALTERA_TAREFA, DEFINIR_PROJETOS, DEFINIR_TAREFAS, EXCLUI_PROJETO, NOTIFICAR, REMOVE_NOTIFICACAO } from "./tipos-de-mutacoes";
 
 interface EstadoInterface {
@@ -92,6 +92,10 @@ export const store = createStore<EstadoInterface>({
         [CADASTRAR_TAREFA]({ commit }, tarefa: TarefaInterface): Promise<void> {
             return clienteHttp.post("/tarefas", tarefa)
                 .then(resposta => this.commit(ADICIONA_TAREFA, resposta.data));
+        },
+        [ALTERAR_TAREFA]({ commit }, tarefa: TarefaInterface): Promise<void> {
+            return clienteHttp.put(`/tarefas/${tarefa.id}`, tarefa)
+                .then(resposta => this.commit(ALTERA_TAREFA, tarefa));
         },
     },
 });
