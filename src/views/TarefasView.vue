@@ -7,7 +7,8 @@
     <TarefaVue
         v-for="(tarefa, indice) of tarefas"
         v-bind:key="indice"
-        v-bind:tarefa="tarefa">
+        v-bind:tarefa="tarefa"
+        @tarefaFoiClicada="selecionarTarefa">
     </TarefaVue>
     <div class="modal">
       <div class="modal-background"></div>
@@ -41,6 +42,11 @@
 
   export default defineComponent({
     name: 'TarefasView',
+    data() {
+      return {
+        tarefaSelecionada: null as TarefaInterface | null
+      }
+    },
     computed: {
       listaEstaVazia(): boolean {
         return this.tarefas.length === 0;
@@ -61,6 +67,9 @@
       }
     },
     methods: {
+      selecionarTarefa(tarefaClicada: TarefaInterface): void {
+        this.tarefaSelecionada = tarefaClicada;
+      },
       salvarTarefa(tarefa: TarefaInterface): void {
         this.store.dispatch(CADASTRAR_TAREFA, tarefa);
       }
