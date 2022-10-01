@@ -10,7 +10,7 @@
         v-bind:tarefa="tarefa"
         @tarefaFoiClicada="selecionarTarefa">
     </TarefaVue>
-    <div class="modal">
+    <div class="modal" v-bind:class="{ 'is-active': tarefaSelecionada }">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
