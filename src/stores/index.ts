@@ -6,7 +6,7 @@ import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import ProjetoInterface from "../interfaces/ProjetoInterface";
 import { ALTERAR_PROJETO, CADASTRAR_PROJETO, CADASTRAR_TAREFA, OBTER_PROJETOS, OBTER_TAREFAS, REMOVER_PROJETO } from "./tipos-de-acoes";
-import { ADICIONA_PROJETO, ADICIONA_TAREFA, ALTERA_PROJETO, DEFINIR_PROJETOS, DEFINIR_TAREFAS, EXCLUI_PROJETO, NOTIFICAR, REMOVE_NOTIFICACAO } from "./tipos-de-mutacoes";
+import { ADICIONA_PROJETO, ADICIONA_TAREFA, ALTERA_PROJETO, ALTERA_TAREFA, DEFINIR_PROJETOS, DEFINIR_TAREFAS, EXCLUI_PROJETO, NOTIFICAR, REMOVE_NOTIFICACAO } from "./tipos-de-mutacoes";
 
 interface EstadoInterface {
     tarefas: Array<TarefaInterface>;
@@ -61,6 +61,11 @@ export const store = createStore<EstadoInterface>({
         },
         [DEFINIR_TAREFAS](state, tarefas: Array<TarefaInterface>): void {
             state.tarefas = tarefas;
+        },
+        [ALTERA_TAREFA](state, tarefaAlterada: TarefaInterface): void {
+            const index = state.tarefas
+                .findIndex(tarefa => tarefa.id == tarefaAlterada.id);
+            state.tarefas[index] = tarefaAlterada;
         },
     },
     actions: {
