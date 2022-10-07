@@ -4,7 +4,7 @@ import TarefaInterface from "@/interfaces/TarefaInterface";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import ProjetoInterface from "../interfaces/ProjetoInterface";
-import { EstadoProjeto, projeto } from "./modulos/projeto";
+import { EstadoProjeto, moduloProjeto } from "./modulos/projeto";
 import { ALTERAR_TAREFA, CADASTRAR_TAREFA, OBTER_TAREFAS } from "./tipos-de-acoes";
 import { ADICIONA_TAREFA, ALTERA_TAREFA, DEFINIR_TAREFAS, NOTIFICAR, REMOVE_NOTIFICACAO } from "./tipos-de-mutacoes";
 
@@ -25,7 +25,7 @@ export const store = createStore<EstadoInterface>({
         }
     },
     modules: {
-        projeto,
+        moduloProjeto,
     },
     mutations: {
         [NOTIFICAR](state, novaNotificacao: NotificacaoInterface) {
