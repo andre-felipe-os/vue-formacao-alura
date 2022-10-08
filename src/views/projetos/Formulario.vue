@@ -36,18 +36,17 @@
         type: String
       }
     },
-    mounted() {
-      if (this.id) {
-        const projeto = this.store.state.moduloProjeto.projetos
-          .find(proj => proj.id == this.id);
-        this.nomeDoProjeto = projeto?.nome || '';
-      }
-    },
-    setup() {
+    setup(props) {
       const store = useStore();
       const { notificar } = useNotificador();
 
       const nomeDoProjeto = ref("");
+
+      if (props.id) {
+        const projeto = store.state.moduloProjeto.projetos
+          .find(proj => proj.id == props.id);
+        nomeDoProjeto.value = projeto?.nome || '';
+      }
 
       return {
         store,
