@@ -69,7 +69,6 @@
       }
 
       return {
-        store,
         nomeDoProjeto,
         lidaComSucesso,
         salvar,
