@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent } from 'vue';
+  import { computed, defineComponent, Ref, ref } from 'vue';
   import { useStore } from 'vuex';
   import { key } from '../stores';
   import TemporizadorVue from './Temporizador.vue';
@@ -40,12 +40,6 @@
   export default defineComponent({
     name: 'FormularioVue',
     emits: ['aoSalvarTarefa'],
-    data() {
-      return {
-        idDoProjeto: '',
-        descricao: ''
-      }
-    },
     components: {
       TemporizadorVue
     },
@@ -61,7 +55,13 @@
     },
     setup() {
       const store = useStore(key);
+
+      const idDoProjeto: Ref<string> = ref("");
+      const descricao: Ref<string> = ref("");
+
       return {
+        idDoProjeto,
+        descricao,
         projetos: computed(() => store.state.moduloProjeto.projetos)
       }
     }
