@@ -56,24 +56,24 @@
         router.push('/projetos');
       }
 
+      const salvar = (): void => {
+        if (props.id) {
+          store.dispatch(ALTERAR_PROJETO, {
+            id: props.id,
+            nome: nomeDoProjeto.value
+          }).then(() => lidaComSucesso());
+        } else {
+          store.dispatch(CADASTRAR_PROJETO, nomeDoProjeto.value)
+            .then(() => lidaComSucesso());
+        }
+      }
+
       return {
         store,
         nomeDoProjeto,
         lidaComSucesso,
+        salvar,
       };
-    },
-    methods: {
-      salvar(): void {
-        if (this.id) {
-          this.store.dispatch(ALTERAR_PROJETO, {
-            id: this.id,
-            nome: this.nomeDoProjeto
-          }).then(() => this.lidaComSucesso());
-        } else {
-          this.store.dispatch(CADASTRAR_PROJETO, this.nomeDoProjeto)
-            .then(() => this.lidaComSucesso());
-        }
-      },
     },
   });
 </script>
