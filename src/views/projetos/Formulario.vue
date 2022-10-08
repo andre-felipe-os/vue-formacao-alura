@@ -58,7 +58,6 @@
 
       return {
         store,
-        notificar,
         nomeDoProjeto,
         lidaComSucesso,
       };
