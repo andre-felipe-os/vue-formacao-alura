@@ -23,6 +23,7 @@
 
 <script lang="ts">
   import { defineComponent, ref } from "vue";
+  import { useRouter } from "vue-router";
 
   import { useStore } from "@/stores";
   import { TipoNotificacao } from "@/interfaces/NotificacaoInterface";
@@ -37,6 +38,7 @@
       }
     },
     setup(props) {
+      const router = useRouter();
       const store = useStore();
       const { notificar } = useNotificador();
 
@@ -48,10 +50,17 @@
         nomeDoProjeto.value = projeto?.nome || '';
       }
 
+      const lidaComSucesso = (): void => {
+        nomeDoProjeto.value = "";
+        notificar(TipoNotificacao.SUCESSO, 'O projeto foi salvo.');
+        router.push('/projetos');
+      }
+
       return {
         store,
         notificar,
         nomeDoProjeto,
+        lidaComSucesso,
       };
     },
     methods: {
@@ -65,11 +74,6 @@
           this.store.dispatch(CADASTRAR_PROJETO, this.nomeDoProjeto)
             .then(() => this.lidaComSucesso());
         }
-      },
-      lidaComSucesso(): void {
-        this.nomeDoProjeto = "";
-        this.notificar(TipoNotificacao.SUCESSO, 'O projeto foi salvo.');
-        this.$router.push('/projetos');
       },
     },
   });
