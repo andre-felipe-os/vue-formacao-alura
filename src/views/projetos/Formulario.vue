@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from "vue";
+  import { defineComponent, ref } from "vue";
 
   import { useStore } from "@/stores";
   import { TipoNotificacao } from "@/interfaces/NotificacaoInterface";
@@ -36,11 +36,6 @@
         type: String
       }
     },
-    data() {
-      return {
-        nomeDoProjeto: '',
-      }
-    },
     mounted() {
       if (this.id) {
         const projeto = this.store.state.moduloProjeto.projetos
@@ -51,9 +46,13 @@
     setup() {
       const store = useStore();
       const { notificar } = useNotificador();
+
+      const nomeDoProjeto = ref("");
+
       return {
         store,
         notificar,
+        nomeDoProjeto,
       };
     },
     methods: {
