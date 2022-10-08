@@ -43,26 +43,28 @@
     components: {
       TemporizadorVue
     },
-    methods: {
-      finalizarTarefa(tempoEmSegundos: number): void {
-        this.$emit('aoSalvarTarefa', {
-          duracaoEmSegundos: tempoEmSegundos,
-          descricao: this.descricao,
-          projeto: this.projetos.find(projeto => projeto.id == this.idDoProjeto)
-        });
-        this.descricao = '';
-      }
-    },
-    setup() {
+    setup(props, { emit }) {
       const store = useStore(key);
 
       const idDoProjeto: Ref<string> = ref("");
       const descricao: Ref<string> = ref("");
 
+      const projetos = computed(() => store.state.moduloProjeto.projetos);
+
+      const finalizarTarefa = (tempoEmSegundos: number): void => {
+        emit('aoSalvarTarefa', {
+          duracaoEmSegundos: tempoEmSegundos,
+          descricao: descricao.value,
+          projeto: projetos.value.find(projeto => projeto.id == idDoProjeto.value)
+        });
+        descricao.value = '';
+      }
+
       return {
         idDoProjeto,
         descricao,
-        projetos: computed(() => store.state.moduloProjeto.projetos)
+        projetos,
+        finalizarTarefa,
       }
     }
   })
