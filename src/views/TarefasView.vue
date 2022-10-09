@@ -4,6 +4,14 @@
     <CaixaVue v-if="listaEstaVazia">
       Você não acompanhou nenhuma tarefa hoje.
     </CaixaVue>
+    <div class="field">
+      <p class="control has-icons-left">
+        <input class="input" type="text" placeholder="Digite para pesquisar">
+        <span class="icon is-small is-left">
+          <i class="fas fa-search"></i>
+        </span>
+      </p>
+    </div>
     <TarefaVue
         v-for="(tarefa, indice) of tarefas"
         v-bind:key="indice"
