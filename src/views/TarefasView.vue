@@ -99,10 +99,15 @@
       store.dispatch(OBTER_PROJETOS);
 
       const filtro: Ref<string> = ref("");
+      const tarefas = computed(() => {
+        return store.state.moduloTarefa.tarefas.filter(tarefa => {
+          return !filtro.value || tarefa.descricao.includes(filtro.value);
+        });
+      });
 
       return {
         filtro,
-        tarefas: computed(() => store.state.moduloTarefa.tarefas),
+        tarefas,
         store,
       }
     },
