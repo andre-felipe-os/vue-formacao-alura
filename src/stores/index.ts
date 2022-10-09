@@ -1,4 +1,3 @@
-import clienteHttp from "@/http";
 import { NotificacaoInterface } from "@/interfaces/NotificacaoInterface";
 import TarefaInterface from "@/interfaces/TarefaInterface";
 import { InjectionKey } from "vue";
@@ -6,8 +5,7 @@ import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import ProjetoInterface from "../interfaces/ProjetoInterface";
 import { EstadoProjeto, moduloProjeto } from "./modulos/projeto";
 import { EstadoTarefa, moduloTarefa } from "./modulos/tarefa";
-import { ALTERAR_TAREFA, CADASTRAR_TAREFA, OBTER_TAREFAS } from "./tipos-de-acoes";
-import { ADICIONA_TAREFA, ALTERA_TAREFA, DEFINIR_TAREFAS, NOTIFICAR, REMOVE_NOTIFICACAO } from "./tipos-de-mutacoes";
+import { NOTIFICAR, REMOVE_NOTIFICACAO } from "./tipos-de-mutacoes";
 
 export interface EstadoInterface {
     moduloTarefa: EstadoTarefa;
