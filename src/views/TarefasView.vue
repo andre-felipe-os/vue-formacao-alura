@@ -6,7 +6,12 @@
     </CaixaVue>
     <div class="field">
       <p class="control has-icons-left">
-        <input class="input" type="text" placeholder="Digite para pesquisar">
+        <input
+            class="input"
+            type="text"
+            placeholder="Digite para pesquisar"
+            v-model="filtro"
+        />
         <span class="icon is-small is-left">
           <i class="fas fa-search"></i>
         </span>
@@ -61,7 +66,7 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent } from 'vue';
+  import { computed, defineComponent, Ref, ref } from 'vue';
 
   import TarefaInterface from '../interfaces/TarefaInterface';
 
@@ -92,7 +97,11 @@
       const store = useStore();
       store.dispatch(OBTER_TAREFAS);
       store.dispatch(OBTER_PROJETOS);
+
+      const filtro: Ref<string> = ref("");
+
       return {
+        filtro,
         tarefas: computed(() => store.state.tarefas),
         store,
       }
