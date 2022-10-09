@@ -42,31 +42,6 @@ export const store = createStore<EstadoInterface>({
                 notificacao.id != idDaNotificacao;
             });
         },
-        [ADICIONA_TAREFA](state, tarefa: TarefaInterface): void {
-            state.tarefas.push(tarefa);
-        },
-        [DEFINIR_TAREFAS](state, tarefas: Array<TarefaInterface>): void {
-            state.tarefas = tarefas;
-        },
-        [ALTERA_TAREFA](state, tarefaAlterada: TarefaInterface): void {
-            const index = state.tarefas
-                .findIndex(tarefa => tarefa.id == tarefaAlterada.id);
-            state.tarefas[index] = tarefaAlterada;
-        },
-    },
-    actions: {
-        [OBTER_TAREFAS]({ commit }) {
-            clienteHttp.get("tarefas")
-                .then(resposta => commit(DEFINIR_TAREFAS, resposta.data));
-        },
-        [CADASTRAR_TAREFA](contexto, tarefa: TarefaInterface): Promise<void> {
-            return clienteHttp.post("/tarefas", tarefa)
-                .then(resposta => this.commit(ADICIONA_TAREFA, resposta.data));
-        },
-        [ALTERAR_TAREFA](contexto, tarefa: TarefaInterface): Promise<void> {
-            return clienteHttp.put(`/tarefas/${tarefa.id}`, tarefa)
-                .then(() => this.commit(ALTERA_TAREFA, tarefa));
-        },
     },
 });
 
