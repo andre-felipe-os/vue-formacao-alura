@@ -102,7 +102,7 @@
 
       return {
         filtro,
-        tarefas: computed(() => store.state.tarefas),
+        tarefas: computed(() => store.state.moduloTarefa.tarefas),
         store,
       }
     },
