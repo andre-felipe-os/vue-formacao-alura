@@ -66,7 +66,7 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, Ref, ref } from 'vue';
+  import { computed, defineComponent, Ref, ref, watchEffect } from 'vue';
 
   import TarefaInterface from '../interfaces/TarefaInterface';
 
@@ -99,10 +99,11 @@
       store.dispatch(OBTER_PROJETOS);
 
       const filtro: Ref<string> = ref("");
-      const tarefas = computed(() => {
-        return store.state.moduloTarefa.tarefas.filter(tarefa => {
-          return !filtro.value || tarefa.descricao.includes(filtro.value);
-        });
+      const tarefas = computed(() => store.state.moduloTarefa.tarefas)
+
+      watchEffect(() => {
+        console.log(filtro.value);
+        store.dispatch("OBTER_TAREFAS", filtro.value);
       });
 
       return {

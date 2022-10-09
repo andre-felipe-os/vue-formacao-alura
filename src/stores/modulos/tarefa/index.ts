@@ -11,8 +11,14 @@ export interface EstadoTarefa {
 
 export const moduloTarefa: Module<EstadoTarefa, EstadoInterface> = {
     actions: {
-        [OBTER_TAREFAS]({ commit }) {
-            clienteHttp.get("tarefas")
+        [OBTER_TAREFAS]({ commit }, filtro: string): void {
+            let url = "tarefas";
+
+            if (filtro) {
+                url += "?descricao=" + filtro;
+            }
+
+            clienteHttp.get(url)
                 .then(resposta => commit(DEFINIR_TAREFAS, resposta.data));
         },
         [CADASTRAR_TAREFA](contexto, tarefa: TarefaInterface): Promise<void> {
