@@ -24,7 +24,7 @@
         @tarefaFoiClicada="selecionarTarefa">
     </TarefaVue>
     <ModalVue v-bind:mostrar="tarefaSelecionada != null" v-if="tarefaSelecionada">
-        <header class="modal-card-head">
+        <template v-slot:cabecalho>
           <p class="modal-card-title">
             Editando tarefa
           </p>
@@ -32,8 +32,8 @@
               aria-label="close"
               @click="fecharModal">
           </button>
-        </header>
-        <section class="modal-card-body">
+        </template>
+        <template v-slot:corpo>
           <div class="field column is-12">
             <label for="descricaoDaTarefa" class="label">
               Descrição
@@ -44,8 +44,8 @@
                 id="descricaoDaTarefa"
                 v-model="tarefaSelecionada.descricao" />
           </div>
-        </section>
-        <footer class="modal-card-foot">
+        </template>
+        <template v-slot:rodape>
           <button class="button is-success"
               @click="alterarTarefa">
             Salvar mudanças
@@ -54,7 +54,7 @@
               @click="fecharModal">
             Cancelar
           </button>
-        </footer>
+        </template>
     </ModalVue>
   </div>
 </template>
