@@ -23,12 +23,7 @@
         v-bind:tarefa="tarefa"
         @tarefaFoiClicada="selecionarTarefa">
     </TarefaVue>
-    <div class="modal"
-        v-bind:class="{ 'is-active': tarefaSelecionada }"
-        v-if="tarefaSelecionada">
-      <div class="modal-background">
-      </div>
-      <div class="modal-card">
+    <ModalVue v-bind:mostrar="tarefaSelecionada != null" v-if="tarefaSelecionada">
         <header class="modal-card-head">
           <p class="modal-card-title">
             Editando tarefa
@@ -60,8 +55,7 @@
             Cancelar
           </button>
         </footer>
-      </div>
-    </div>
+    </ModalVue>
   </div>
 </template>
 
@@ -73,6 +67,7 @@
   import CaixaVue from '../components/Caixa.vue';
   import FormularioVue from '../components/Formulario.vue';
   import TarefaVue from '../components/Tarefa.vue';
+  import ModalVue from '../components/Modal.vue';
   import { useStore } from '@/stores';
   import { ALTERAR_TAREFA, CADASTRAR_TAREFA, OBTER_PROJETOS, OBTER_TAREFAS } from '@/stores/tipos-de-acoes';
 
@@ -89,6 +84,7 @@
       }
     },
     components: {
+      ModalVue,
       CaixaVue,
       TarefaVue,
       FormularioVue
