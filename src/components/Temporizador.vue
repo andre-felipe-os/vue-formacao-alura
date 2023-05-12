@@ -7,7 +7,7 @@
       <span class="icon">
         <i class="fas fa-play"></i>
       </span>
-      <span>play</span>
+      <span>Iniciar</span>
     </button>
     <button class="button"
         @click="finalizar"
@@ -15,7 +15,7 @@
       <span class="icon">
         <i class="fas fa-stop"></i>
       </span>
-      <span>stop</span>
+      <span>Parar</span>
     </button>
   </div>
 </template>
